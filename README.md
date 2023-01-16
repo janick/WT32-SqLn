@@ -7,6 +7,13 @@ I found plenty of YouTube videos demonstrating it's amazing screen and performan
 all in an under-$30 device. After plenty of digging and experiments and frustrating hours,
 here's a detailed description of what I learned. Further contributions welcomed.
 
+* [What you need to know right now](#what-you-need-to-know-right-now)
+* [What you'll need](#what-youll-need)
+* [Programming](#programming)
+* [OTA updates](#ota-updates)
+* [Squareline Studio](#squareline-studio
+* [3D-printed cases](#3d-printed-cases)
+
 ## What you need to know right now
 
 1. It uses a ESP32-S3 WROVER, not a ESP32 VROOM.
@@ -35,11 +42,13 @@ and:
 ## Programming
 
 Unlike other ESP32 development boards, you can't program the WT32-SC01 Plus using the USB-C port.
-That port is only for suppling power.
+That port is only for supplying power.
 You *HAVE TO* use the serial port and trigger the programming mode using EN and GPIO0.
 As the programmer wasn't included with the board, it was a particularly frustrating step.
 
 If you bought the version that includes the programmer, you can skip to TBD.
+
+### Using your own USB-to-serial board
 
 Using a 7-pin MX1.25 PicoBlade dongle and a 3-pin 2.54mm/0.1" pin header connector housing,
 create a cable to connect the TX, RX, and GND pins on the Debug Interface
@@ -89,6 +98,9 @@ of the WT32-SC01 Plus.
 
 5. To run your application, disconnect the GPIO0 wire, then reset the WT32-SC01 Plus again.
 
+### Using the WT programmer
+
+If you were fortunate enough to order a WT32-SC01 Plus that came with its own custom programmer, TBD
 
 ## OTA Updates
 
