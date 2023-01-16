@@ -9,7 +9,7 @@ here's a detailed description of what I learned. Further contributions welcomed.
 
 ## What you need to know right now
 
-1. It uses a ESP32-C3 WROVER, not a ESP32 VROOM.
+1. It uses a ESP32-S3 WROVER, not a ESP32 VROOM.
 1. It is not supported by the latest Arduino IDE
 1. You can't program it using the USB-C port
 1. You can't power it using the USB-to-serial board only
