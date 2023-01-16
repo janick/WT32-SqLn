@@ -11,7 +11,7 @@ here's a detailed description of what I learned. Further contributions welcomed.
 * [What you'll need](#what-youll-need)
 * [Programming](#programming)
 * [OTA updates](#ota-updates)
-* [Squareline Studio](#squareline-studio
+* [Squareline Studio](#squareline-studio)
 * [3D-printed cases](#3d-printed-cases)
 
 ## What you need to know right now
