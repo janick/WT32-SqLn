@@ -68,25 +68,26 @@ Notice how the white "GPIO0" wire is connected to a separate exposed GND pin on 
 
 ![WT32-SC01 Plus DIY Programmer Cable](assets/diy_programmer.jpg "DIY Programmer Cable")
 
-The following steps assume you have an application,  succesfully compiled using `idf.py build`.
+The following steps assume you have an application succesfully compiled using `idf.py build` (see TBD).
 To program, then run your application with the serial monitor, power the WT32-SC01 Plus via its own
 USB-C port as well as connecting your serial board to a USB port on your computer.
 
 1. To enter programming mode, connect the GPIO0 wire to the GND pin, then press the RESET button on the back
-of the WT32-SC01 plus.
+of the WT32-SC01 Plus.
 
-2. Flash your application using the command `idf.py flash`. Wait until the flashing process completes with a `Hard resetting via RTS pin...` message.
+1. Flash your application using the command `idf.py flash`. Wait until the flashing process completes with a `Hard resetting via RTS pin...` message.
+   Skip to step 5 if you are not using the serial monitor to debug your application.
 
-3. Reset the WT32-SC01 plus again.
+1. Leave the GPIO0 wire connected to the GND pin and reset the WT32-SC01 Plus again.
 
-4. Start the serial monitor using the command `idf.py monitor`. Wait until the monitor is running indicated by the following message:
+1. Start the serial monitor using the command `idf.py monitor`. Wait until the monitor is running indicated by the following message:
 
 ```
 --- idf_monitor on /dev/cu.wchusbserial54340143141 115200 ---
 --- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
 ```
 
-5. To run your application, disconnect the GPIO0 wire, then Reset the WT32-SC01 plus again.
+1. To run your application, disconnect the GPIO0 wire, then reset the WT32-SC01 Plus again.
 
 
 ## ToDo
