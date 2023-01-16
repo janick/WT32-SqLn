@@ -32,7 +32,7 @@ or
 
 1. A [WT32-SC01 Plus board](https://www.aliexpress.us/item/3256803559528956.html) without programmer
 1. A [3.3V USB-to-Serial communication board](https://www.aliexpress.us/item/3256803764808791.html)
-1. [7-pin MX1.25 PicoBlade dongles](https://www.aliexpress.us/item/3256804401152079.html (get some 8-pin ones too if you plan on using GPIOs)
+1. [7-pin MX1.25 PicoBlade dongles](https://www.aliexpress.us/item/3256804401152079.html) (get some 8-pin ones too if you plan on using GPIOs)
 1. [2.54mm/0.1" pin header with suitable female connector housings](https://www.amazon.com/gp/product/B077X8XV2J)
 
 and:
@@ -63,7 +63,7 @@ without disconnecting the other wires.
 ##### Debug Interface on WT32-SC01 Plus
 | Pin | Description | ESP32 Pin | Voltage Range | Remark
 | --- | ----------- | --------- | ------------- | ------
-| 1 | +5V | | 5V |
+| 1 | +5V | | 5V | USB-to-serial not sufficient as power source
 | 2 | +3.3V | | 3.3V | For reference, not for power input
 | 3 | ESP_TXD | TXD0 | 3.3V TTL |
 | 4 | ESP_RXD | RXD0 | 3.3V TTL |
