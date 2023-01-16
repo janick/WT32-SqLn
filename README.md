@@ -48,7 +48,7 @@ That port is only for supplying power.
 You *HAVE TO* use the serial port and trigger the programming mode using EN and GPIO0.
 As the programmer wasn't included with the board, it was a particularly frustrating step.
 
-If you bought the version that includes the programmer, you can skip to TBD.
+If you bought the version that includes the programmer, you can skip to the "[Using the WT programmer](#using-the-wt-programmer)" section.
 
 ### Using your own USB-to-serial board
 
