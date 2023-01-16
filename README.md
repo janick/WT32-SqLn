@@ -25,20 +25,20 @@ here's a detailed description of what I learned. Further contributions welcomed.
 
 ## What you'll need
 
-1. A WT32-SC01 Plus board with programmer: https://www.alibaba.com/product-detail/Upgrade-WT32-SC01-plus-16MB-hmi_1600609718238.html
-1. 8-pin MX1.25 PicoBlade dongle if you plan on using GPIOs: https://www.aliexpress.us/item/3256804401152079.html
+1. A [WT32-SC01 Plus board with programmer](https://www.alibaba.com/product-detail/Upgrade-WT32-SC01-plus-16MB-hmi_1600609718238.html)
+1. [8-pin MX1.25 PicoBlade dongles](https://www.aliexpress.us/item/3256804401152079.html) if you plan on using GPIOs
 
 or
 
-1. A WT32-SC01 Plus board: https://www.aliexpress.us/item/3256803559528956.html
-1. A 3.3V USB-to-Serial communication board: https://www.aliexpress.us/item/3256803764808791.html
-1. 7-pin MX1.25 PicoBlade dongle: https://www.aliexpress.us/item/3256804401152079.html (get some 8-pin ones too if you plan on using GPIOs)
-1. 2.54mm/0.1" pin header with 3-pin and 1-pin female connector housings
+1. A [WT32-SC01 Plus board](https://www.aliexpress.us/item/3256803559528956.html) without programmer
+1. A [3.3V USB-to-Serial communication board](https://www.aliexpress.us/item/3256803764808791.html)
+1. [7-pin MX1.25 PicoBlade dongles](https://www.aliexpress.us/item/3256804401152079.html (get some 8-pin ones too if you plan on using GPIOs)
+1. [2.54mm/0.1" pin header with suitable female connector housings](https://www.amazon.com/gp/product/B077X8XV2J)
 
 and:
 
-1. ESP-IDF v5.0: https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html
-1. SquareLine Studio: https://squareline.io
+1. [ESP-IDF v5.0](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html)
+1. [SquareLine Studio](https://squareline.io)
 1. USB-C 2A power supply
 
 ## Programming
@@ -52,7 +52,7 @@ If you bought the version that includes the programmer, you can skip to the "[Us
 
 ### Using your own USB-to-serial board
 
-Using a 7-pin MX1.25 PicoBlade dongle and a 3-pin 2.54mm/0.1" pin header connector housing,
+Using a 7-pin MX1.25 PicoBlade dongle and a 2.54mm/0.1" pin header connector housing that matches your board,
 create a cable to connect the TX, RX, and GND pins on the Debug Interface
 to the RX, TX, and GND pins respectively on your USB-to-serial communication board,
 and using a *separate* 1-pin connector housing, connect the GPIO0 pin on the Debug Interface
