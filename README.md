@@ -79,7 +79,7 @@ Notice how the white "GPIO0" wire is connected to a separate exposed GND pin on 
 
 ![WT32-SC01 Plus DIY Programmer Cable](assets/diy_programmer.jpg "DIY Programmer Cable")
 
-The following steps assume you have an application succesfully compiled using `idf.py build` (see TBD).
+The following steps assume you have an application succesfully compiled using `idf.py build` (see [Build This Example](#build-this-example) section).
 To program, then run your application with the serial monitor, power the WT32-SC01 Plus via its own
 USB-C port as well as connecting your serial board to a USB port on your computer.
 
@@ -106,7 +106,18 @@ If you were fortunate enough to order a WT32-SC01 Plus that came with its own cu
 
 ## OTA Updates
 
-Todo
+The example application includes over-the-air (OTA) update cability.
+Once the example application is flashed once using the serial communication board,
+you can use OTA updates instead for subsequent updates but takes longer to flash (approx 2mins).
+
+1. Build the latest version of the application using the command `idf.py build`
+
+1. Start the OTA server using the command `python webserver`
+
+1. Reset your WT32-SC01 Plus
+
+1. While the splash screen is displayed, tap the project name 5 times to trigger an OTA upgrade.
+   For the upgrade to complete succesfully, you must have specified your WiFi credentials and OTA server certificate when building.
 
 ## Squareline Studio
 
@@ -122,11 +133,30 @@ e.g. on my Mac:
 $ cp -r SquareLine/boards/* /Applications/Squareline_Studio.app/Contents/boards
 ```
 
+## Building This Example
+
+After cloning this respository:
+
+1. Set your target device using the command `idf.py set-target esp32s3`
+
+2. Generate a self-signed certificate for the OTA https server using the command `openssl req -x509 -newkey rsa:2048 -keyout ca_key.pem -out ca_cert.pem -days 365 -nodes`.
+   When prompted for the `Common Name (CN)`, enter the IP address of the server that the WT32-SC01 Plus will connect to.
+
+3. Copy the file `secrets.h` into the 'main' directory, and edit it to specify your Wifi credentials and OTA server certificate.
+   The certificate can be found in the file `server_certs/ca_cert.pem`.
+   ToDo: replace with menuconfig and get the certificate compiled into the binary directly.
+
+4. Build the demo application using the command `idf.py build`
+
+## Screenshots
+
+![Splash](assets/splashScreen.jpg) ![OTA](assets/OTAScreen.jpg) ![Main](assets/mainAppScreen.jpg)
+
+
 ## ToDo
 
-*
-* Get my code configurable using menuconfig
 * Add my code
+* Get my code configurable using menuconfig
 
 ## 3D-Printed Cases
 
@@ -134,3 +164,9 @@ In the 3Dprint directory, you'll find STL files for 3D-printable cases
 
 * BatteryCase: Compact case that can fit the WT32-SC01 Plus, a [3.7V lithium-ion battery](https://www.aliexpress.us/item/3256803919111184.html), a [charger module](https://www.aliexpress.us/item/3256804193670438.html), and a [power switch](https://www.aliexpress.us/item/2251832642923360.html).
   The USB-C opening and tabs to hold the charger module still need some tweaking.
+
+
+## References
+
+* https://github.com/sukesh-ak/ESP32-TUX
+* https://github.com/espressif/esp-idf/tree/master/examples/system/ota
