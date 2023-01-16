@@ -87,7 +87,7 @@ of the WT32-SC01 Plus.
 --- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
 ```
 
-1. To run your application, disconnect the GPIO0 wire, then reset the WT32-SC01 Plus again.
+5. To run your application, disconnect the GPIO0 wire, then reset the WT32-SC01 Plus again.
 
 
 ## ToDo
