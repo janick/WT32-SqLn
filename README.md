@@ -39,7 +39,7 @@ to a *second* exposed GND pin on your USB-to-serial communication board.
 It is important that it be possible to disconnect the GPIO0 wire from the USB-to-serial board
 without disconnecting the other wires.
 
-### Debug Interface on WT32-SC01 Plus
+##### Debug Interface on WT32-SC01 Plus
 | Pin | Description | ESP32 Pin | Voltage Range | Remark
 | --- | ----------- | --------- | ------------- | ------
 | 1 | +5V | | 5V |
