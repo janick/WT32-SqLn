@@ -16,10 +16,18 @@ here's a detailed description of what I learned. Further contributions welcomed.
 
 ## What you'll need
 
+1. A WT32-SC01 Plus board with programmer: https://www.alibaba.com/product-detail/Upgrade-WT32-SC01-plus-16MB-hmi_1600609718238.html
+1. 8-pin MX1.25 PicoBlade dongle if you plan on using GPIOs: https://www.aliexpress.us/item/3256804401152079.html
+
+or
+
 1. A WT32-SC01 Plus board: https://www.aliexpress.us/item/3256803559528956.html
 1. A 3.3V USB-to-Serial communication board: https://www.aliexpress.us/item/3256803764808791.html
 1. 7-pin MX1.25 PicoBlade dongle: https://www.aliexpress.us/item/3256804401152079.html (get some 8-pin ones too if you plan on using GPIOs)
 1. 2.54mm/0.1" pin header with 3-pin and 1-pin female connector housing: 4-pin and 1-pin female
+
+and:
+
 1. ESP-IDF v5.0: https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html
 1. SquareLine Studio: https://squareline.io
 1. USB-C 2A power supply
@@ -30,6 +38,9 @@ Unlike other ESP32 development boards, you can't program the WT32-SC01 Plus usin
 That port is only for suppling power.
 You *HAVE TO* use the serial port and trigger the programming mode using EN and GPIO0.
 Furtunately, *that* bit is identical to all other ESP32 products.
+
+If you bought the version that includes the programmer, you can skip to TBD.
+If
 
 Using a 7-pin MX1.25 PicoBlade dongle and a 3-pin 2.54mm/0.1" pin header connector housing,
 create a cable to connect the TX, RX, and GND pins on the Debug Interface
