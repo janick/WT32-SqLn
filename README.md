@@ -14,6 +14,8 @@ here's a detailed description of what I learned. Further contributions welcomed.
   * [Using the WT programmer](#using-the-wt-programmer)
 * [OTA updates](#ota-updates)
 * [Squareline Studio](#squareline-studio)
+* [Building This Example](#building-this-example)
+* [Screenshots](#screenshots)
 * [3D-printed cases](#3d-printed-cases)
 
 ## What you need to know right now
@@ -150,7 +152,7 @@ After cloning this respository:
 
 ## Screenshots
 
-![Splash](assets/splashScreen.jpg) ![OTA](assets/OTAScreen.jpg) ![Main](assets/mainAppScreen.jpg)
+![Splash](assets/splashScreen.jpg | width=100) ![OTA](assets/OTAScreen.jpg | width=100) ![Main](assets/mainAppScreen.jpg | width=100)
 
 
 ## ToDo
