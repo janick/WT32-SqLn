@@ -10,6 +10,8 @@ here's a detailed description of what I learned. Further contributions welcomed.
 * [What you need to know right now](#what-you-need-to-know-right-now)
 * [What you'll need](#what-youll-need)
 * [Programming](#programming)
+  * [Using your own USB-to-serial board](#using-your-own-usb-to-serial-board)
+  * [Using the WT programmer](#using-the-wt-programmer)
 * [OTA updates](#ota-updates)
 * [Squareline Studio](#squareline-studio)
 * [3D-printed cases](#3d-printed-cases)
