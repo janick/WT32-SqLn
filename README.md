@@ -40,7 +40,6 @@ You *HAVE TO* use the serial port and trigger the programming mode using EN and 
 Furtunately, *that* bit is identical to all other ESP32 products.
 
 If you bought the version that includes the programmer, you can skip to TBD.
-If
 
 Using a 7-pin MX1.25 PicoBlade dongle and a 3-pin 2.54mm/0.1" pin header connector housing,
 create a cable to connect the TX, RX, and GND pins on the Debug Interface
@@ -65,20 +64,30 @@ without disconnecting the other wires.
 
 Here's my DIY programming cable.
 I did connect the 5V line so I could easily identify which side of the connector was "up": the red wire goes with the VCC pin.
+Notice how the white "GPIO0" wire is connected to a separate exposed GND pin on the programmer.
 
 ![WT32-SC01 Plus DIY Programmer Cable](assets/diy_programmer.jpg "DIY Programmer Cable")
 
-#### To enter programming mode
+The following steps assume you have an application,  succesfully compiled using `idf.py build`.
+To program, then run your application with the serial monitor, power the WT32-SC01 Plus via its own
+USB-C port as well as connecting your serial board to a USB port on your computer.
 
-todo
+1. To enter programming mode, connect the GPIO0 wire to the GND pin, then press the RESET button on the back
+of the WT32-SC01 plus.
 
-#### To enter monitor mode
+2. Flash your application using the command `idf.py flash`. Wait until the flashing process completes with a `Hard resetting via RTS pin...` message.
 
-todo
+3. Reset the WT32-SC01 plus again.
 
-#### To run program
+4. Start the serial monitor using the command `idf.py monitor`. Wait until the monitor is running indicated by the following message:
 
-todo
+```
+--- idf_monitor on /dev/cu.wchusbserial54340143141 115200 ---
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+```
+
+5. To run your application, disconnect the GPIO0 wire, then Reset the WT32-SC01 plus again.
+
 
 ## ToDo
 
