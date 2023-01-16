@@ -24,7 +24,7 @@ or
 1. A WT32-SC01 Plus board: https://www.aliexpress.us/item/3256803559528956.html
 1. A 3.3V USB-to-Serial communication board: https://www.aliexpress.us/item/3256803764808791.html
 1. 7-pin MX1.25 PicoBlade dongle: https://www.aliexpress.us/item/3256804401152079.html (get some 8-pin ones too if you plan on using GPIOs)
-1. 2.54mm/0.1" pin header with 3-pin and 1-pin female connector housing: 4-pin and 1-pin female
+1. 2.54mm/0.1" pin header with 3-pin and 1-pin female connector housings
 
 and:
 
@@ -63,15 +63,20 @@ without disconnecting the other wires.
 
 ![WT32-SC01 Plus Back](assets/wt32_sc01_plus.png)
 
-### To enter programming mode
+Here's my DIY programming cable.
+I did connect the 5V line so I could easily identify which side of the connector was "up": the red wire goes with the VCC pin.
+
+![WT32-SC01 Plus DIY Programmer Cable](assets/diy_programmer.jpg "DIY Programmer Cable")
+
+#### To enter programming mode
 
 todo
 
-### To enter monitor mode
+#### To enter monitor mode
 
 todo
 
-### To run program
+#### To run program
 
 todo
 
