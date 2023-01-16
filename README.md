@@ -118,5 +118,5 @@ $ cp -r SquareLine/boards/* /Applications/Squareline_Studio.app/Contents/boards
 
 In the 3Dprint directory, you'll find STL files for 3D-printable cases
 
-* BatteryCase: Compact case that can fit the WT32-SC01 Plus, a [3.7V lithium-ion battery](https://www.aliexpress.us/item/3256803919111184.html), and a [charger module](https://www.aliexpress.us/item/3256804193670438.html).
+* BatteryCase: Compact case that can fit the WT32-SC01 Plus, a [3.7V lithium-ion battery](https://www.aliexpress.us/item/3256803919111184.html), a [charger module](https://www.aliexpress.us/item/3256804193670438.html), and a [power switch](https://www.aliexpress.us/item/2251832642923360.html).
   The USB-C opening and tabs to hold the charger module still need some tweaking.
