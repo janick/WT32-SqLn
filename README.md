@@ -37,7 +37,7 @@ and:
 Unlike other ESP32 development boards, you can't program the WT32-SC01 Plus using the USB-C port.
 That port is only for suppling power.
 You *HAVE TO* use the serial port and trigger the programming mode using EN and GPIO0.
-Furtunately, *that* bit is identical to all other ESP32 products.
+As the programmer wasn't included with the board, it was a particularly frustrating step.
 
 If you bought the version that includes the programmer, you can skip to TBD.
 
@@ -96,16 +96,16 @@ Todo
 
 ## Squareline Studio
 
-To add support for the WT32-SC01 Plus, copy the `SquareLine/boards` directory into your Squareline Studio installation using the command
+To add support for the WT32-SC01 Plus, copy the content of the `SquareLine/boards` directory into your Squareline Studio installation using the command
 
 ```
-$ cp -r SquareLine/boards <Path to Squareline Studio installation>
+$ cp -r SquareLine/boards/* <Path to Squareline Studio installation>/boards
 ```
 
 e.g. on my Mac:
 
 ```
-$ cp -r SquareLine/boards /Applications/Squareline_Studio.app/Contents
+$ cp -r SquareLine/boards/* /Applications/Squareline_Studio.app/Contents/boards
 ```
 
 ## ToDo
@@ -113,3 +113,9 @@ $ cp -r SquareLine/boards /Applications/Squareline_Studio.app/Contents
 *
 * Get my code configurable using menuconfig
 * Add my code
+
+## 3D-Printed Cases
+
+In the 3Dprint directory, you'll fid STL files for 3D-printable cases
+
+* BatteryCase: Compact case that can fit the WT32-SC01 Plus, a 3.7V lithium-ion battery, and a charger module.
