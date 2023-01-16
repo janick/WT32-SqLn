@@ -50,6 +50,8 @@ without disconnecting the other wires.
 | 6 | BOOT | GPIO 0 | 0-3.3V | 
 | 7 | GND | | 0V |
 
+![WT32-SC01 Plus Back](assets/wt32_sc01_plus.png)
+
 ### To enter programming mode
 
 todo
