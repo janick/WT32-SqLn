@@ -152,7 +152,7 @@ After cloning this respository:
 
 ## Screenshots
 
-![Splash](assets/splashScreen.jpg|width=100px) ![OTA](assets/OTAScreen.jpg|width=100px) ![Main](assets/mainAppScreen.jpg|width=100px)
+![Splash](assets/splashScreen.jpg | width=100px) ![OTA](assets/OTAScreen.jpg | width=100px) ![Main](assets/mainAppScreen.jpg | width=100px)
 
 
 ## ToDo
