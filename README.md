@@ -1,5 +1,5 @@
 # WT32-SqLn
-Getting started with Wireless Tag's WT32-SC01 Plus using SquareLine Studio and LVGL
+Getting started with Wireless Tag's WT32-SC01 Plus using SquareLine Studio, LVGL, and OTA updates.
 
 ## Overview
 I recently bought a WT32-SC01 Plus but quickly grew frustrated when it came time to use it.
@@ -72,7 +72,7 @@ The following steps assume you have an application succesfully compiled using `i
 To program, then run your application with the serial monitor, power the WT32-SC01 Plus via its own
 USB-C port as well as connecting your serial board to a USB port on your computer.
 
-1. To enter programming mode, connect the GPIO0 wire to the GND pin, then press the RESET button on the back
+1. To enter programming mode, connect the GPIO0 wire to the GND pin, then press the `RST` button on the back
 of the WT32-SC01 Plus.
 
 1. Flash your application using the command `idf.py flash`. Wait until the flashing process completes with a `Hard resetting via RTS pin...` message.
@@ -89,6 +89,24 @@ of the WT32-SC01 Plus.
 
 5. To run your application, disconnect the GPIO0 wire, then reset the WT32-SC01 Plus again.
 
+
+## OTA Updates
+
+Todo
+
+## Squareline Studio
+
+To add support for the WT32-SC01 Plus, copy the `SquareLine/boards` directory into your Squareline Studio installation using the command
+
+```
+$ cp -r SquareLine/boards <Path to Squareline Studio installation>
+```
+
+e.g. on my Mac:
+
+```
+$ cp -r SquareLine/boards /Applications/Squareline_Studio.app/Contents
+```
 
 ## ToDo
 
