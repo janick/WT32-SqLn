@@ -40,14 +40,15 @@ It is important that it be possible to disconnect the GPIO0 wire from the USB-to
 without disconnecting the other wires.
 
 ### Debug Interface on WT32-SC01 Plus
-Pin | Description | Module Pin | Voltage Range | Remark
-1 | +5V | | 5V |
-2 | +3.3V | | 3.3V | For reference, not for power input
-3 | ESP_TXD | TXD0 | 3.3V TTL |
-4 | ESP_RXD | RXD0 | 3.3V TTL |
-5 | EN | EN | 0-3.3V |
-6 | BOOT | GPIO 0 | 0-3.3V | 
-7 | GND | | 0V |
+| Pin | Description | ESP32 Pin | Voltage Range | Remark
+| --- | ----------- | --------- | ------------- | ------
+| 1 | +5V | | 5V |
+| 2 | +3.3V | | 3.3V | For reference, not for power input
+| 3 | ESP_TXD | TXD0 | 3.3V TTL |
+| 4 | ESP_RXD | RXD0 | 3.3V TTL |
+| 5 | EN | EN | 0-3.3V |
+| 6 | BOOT | GPIO 0 | 0-3.3V | 
+| 7 | GND | | 0V |
 
 ### To enter programming mode
 
