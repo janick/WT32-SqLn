@@ -172,11 +172,29 @@ After cloning this respository:
 
 <img src="assets/splashScreen.jpg" height=300> <img src="assets/OTAScreen.jpg" height=300> <img src="assets/mainAppScreen.jpg" height=300>
 
+## Partitions
+
+This example uses a custom partition for maximum application size.
+Even though the example application is only 1.4MB, the ESP32-S3 is configured with two 4032KB partitions,
+the largest OTA partitions you can have.
+
+```
+# ESP-IDF Partition Table
+# Name, Type, SubType, Offset, Size, Flags
+nvs,data,nvs,0x9000,16K,
+otadata,data,ota,0xd000,8K,
+phy_init,data,phy,0xf000,4K,
+ota_0,app,ota_0,0x10000,4032K,
+ota_1,app,ota_1,0x400000,4032K,
+```
+
+Refer to [Partition Tables](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/partition-tables.html) for more details about trade-offs.
+
 
 ## ToDo
 
 * Get my code configurable using menuconfig
-* Add discussion on partitioning
+
 
 ## 3D-Printed Cases
 
