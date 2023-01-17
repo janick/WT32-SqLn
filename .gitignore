@@ -3,6 +3,11 @@ main/secrets.h
 build*
 backup
 managed_components
+dependencies.lock
+sdkconfig
+
+*~
+*#*#
 
 # Prerequisites
 *.d

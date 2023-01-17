@@ -146,7 +146,7 @@ $ cp -r SquareLine/boards/* /Applications/Squareline_Studio.app/Contents/boards
 Restart Squareline Studio if it is was already running.
 
 You'll find the Squareline Studio project for this example in `SquareLine/SquareLine_Project.spj`.
-When exporting your UI files, export them in the main/ui directory
+When exporting your UI files, export them in the `main/ui` directory
 
 
 ## Building This Example
@@ -156,11 +156,11 @@ After cloning this respository:
 1. Update the component submodules using the commands `git submodule init` and  `git submodule update --progress`.
    Be patient. This can take a while.
 
-1. Set your target device using the command `idf.py set-target esp32s3`
-
 1. Generate a self-signed certificate for the OTA https server using the command
    `openssl req -x509 -newkey rsa:2048 -keyout server_certs/ca_key.pem -out server_certs/ca_cert.pem -days 365 -nodes`.
    When prompted for the `Common Name (CN)`, enter the IP address of the server that the WT32-SC01 Plus will connect to.
+
+1. Set your target device using the command `idf.py set-target esp32s3`
 
 1. Copy the file `secrets.h` into the 'main' directory, and edit it to specify your WiFi credentials and OTA server certificate.
    The certificate can be found in the file `server_certs/ca_cert.pem`.
