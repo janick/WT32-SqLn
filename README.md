@@ -111,7 +111,7 @@ If you were fortunate enough to order a WT32-SC01 Plus that came with its own cu
 ## OTA Updates
 
 This trivial example application includes over-the-air (OTA) update cability.
-Once the example application is flashed once using the serial communication board,
+Once the example application is flashed using the serial communication board,
 you can use OTA updates instead for subsequent updates but takes longer to flash (approx 2mins).
 
 1. Build the latest version of the application using the command `idf.py build`
@@ -121,7 +121,9 @@ you can use OTA updates instead for subsequent updates but takes longer to flash
 1. Reset your WT32-SC01 Plus
 
 1. While the splash screen is displayed, tap the project name 5 times to trigger an OTA upgrade.
-   For the upgrade to complete succesfully, you must have correctly specified your WiFi credentials and OTA server certificate when building.
+
+For the upgrade to complete succesfully, you must have correctly specified your WiFi credentials and OTA server certificate when building.
+
 
 ## Squareline Studio
 
@@ -148,14 +150,15 @@ After cloning this respository:
 
 1. Set your target device using the command `idf.py set-target esp32s3`
 
-2. Generate a self-signed certificate for the OTA https server using the command `openssl req -x509 -newkey rsa:2048 -keyout ca_key.pem -out ca_cert.pem -days 365 -nodes`.
+1. Generate a self-signed certificate for the OTA https server using the command
+   `openssl req -x509 -newkey rsa:2048 -keyout server_certs/ca_key.pem -out server_certs/ca_cert.pem -days 365 -nodes`.
    When prompted for the `Common Name (CN)`, enter the IP address of the server that the WT32-SC01 Plus will connect to.
 
-3. Copy the file `secrets.h` into the 'main' directory, and edit it to specify your WiFi credentials and OTA server certificate.
+1. Copy the file `secrets.h` into the 'main' directory, and edit it to specify your WiFi credentials and OTA server certificate.
    The certificate can be found in the file `server_certs/ca_cert.pem`.
    ToDo: replace with menuconfig and get the certificate compiled into the binary directly.
 
-4. Build the demo application using the command `idf.py build`
+1. Build the demo application using the command `idf.py build`
 
 ## Screenshots
 

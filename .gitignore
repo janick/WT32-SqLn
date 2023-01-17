@@ -1,4 +1,8 @@
 main/secrets.h
+*.pem
+build*
+backup
+managed_components
 
 # Prerequisites
 *.d
