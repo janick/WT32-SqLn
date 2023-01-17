@@ -139,6 +139,8 @@ $ cp -r SquareLine/boards/* /Applications/Squareline_Studio.app/Contents/boards
 
 Restart Squareline Studio if it is was already running.
 
+When exporting your UI files, export them in the main/ui directory
+
 
 ## Building This Example
 
@@ -149,7 +151,7 @@ After cloning this respository:
 2. Generate a self-signed certificate for the OTA https server using the command `openssl req -x509 -newkey rsa:2048 -keyout ca_key.pem -out ca_cert.pem -days 365 -nodes`.
    When prompted for the `Common Name (CN)`, enter the IP address of the server that the WT32-SC01 Plus will connect to.
 
-3. Copy the file `secrets.h` into the 'main' directory, and edit it to specify your Wifi credentials and OTA server certificate.
+3. Copy the file `secrets.h` into the 'main' directory, and edit it to specify your WiFi credentials and OTA server certificate.
    The certificate can be found in the file `server_certs/ca_cert.pem`.
    ToDo: replace with menuconfig and get the certificate compiled into the binary directly.
 
