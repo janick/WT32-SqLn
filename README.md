@@ -48,7 +48,7 @@ and:
 Unlike other ESP32 development boards, you can't program the WT32-SC01 Plus using the USB-C port.
 That port is only for supplying power.
 You *HAVE TO* use the serial port and trigger the programming mode using EN and GPIO0.
-As the programmer wasn't included with the board, it was a particularly frustrating step.
+As the programmer wasn't included with the board I purchased, it was a particularly frustrating step.
 
 If you bought the version that includes the programmer, you can skip to the "[Using the WT programmer](#using-the-wt-programmer)" section.
 
@@ -84,6 +84,10 @@ Notice how the white "GPIO0" wire is connected to a separate exposed GND pin on 
 The following steps assume you have an application succesfully compiled using `idf.py build` (see [Build This Example](#build-this-example) section).
 To program, then run your application optionally with the serial monitor, power the WT32-SC01 Plus via its own
 USB-C port as well as connecting your serial board to a USB port on your computer.
+
+1. If you are using a Windows or MacOS machine, make sure you have the necessary driver installed for your USN-to-serial board.
+   Refer to the documentation provided by the vendor for details.
+   It is probably going to be a [CP210x][https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers] or [CH34X][https://www.wemos.cc/en/latest/ch340_driver.html] drivers.
 
 1. To enter programming mode, connect the GPIO0 wire to the GND pin, then press the `RST` button on the back
 of the WT32-SC01 Plus.
@@ -148,6 +152,8 @@ When exporting your UI files, export them in the main/ui directory
 
 After cloning this respository:
 
+1. Update the component submodules using the commands `git submodule init` and  `git submodule update`.
+
 1. Set your target device using the command `idf.py set-target esp32s3`
 
 1. Generate a self-signed certificate for the OTA https server using the command
@@ -167,7 +173,6 @@ After cloning this respository:
 
 ## ToDo
 
-* Add my code
 * Get my code configurable using menuconfig
 * Add discussion on partitioning
 
