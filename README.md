@@ -67,11 +67,11 @@ without disconnecting the other wires.
 | --- | ----------- | --------- | ------------- | ------ | ---------- |
 | 1 | +5V | | 5V | USB-to-serial not sufficient as power source | open |
 | 2 | +3.3V | | 3.3V | For reference, not for power input | open |
-| 3 | ESP_TXD | TXD0 | 3.3V TTL | Rx |
-| 4 | ESP_RXD | RXD0 | 3.3V TTL | Tx |
-| 5 | EN | EN | 0-3.3V | open |
-| 6 | BOOT | GPIO 0 | 0-3.3V | GND/open |
-| 7 | GND | | 0V | GND |
+| 3 | ESP_TXD | TXD0 | 3.3V TTL | | Rx |
+| 4 | ESP_RXD | RXD0 | 3.3V TTL | | Tx |
+| 5 | EN | EN | 0-3.3V | | open |
+| 6 | BOOT | GPIO 0 | 0-3.3V | | GND/open |
+| 7 | GND | | 0V | | GND |
 
 ![WT32-SC01 Plus Back](assets/wt32_sc01_plus.png)
 
