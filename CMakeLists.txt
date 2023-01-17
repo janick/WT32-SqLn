@@ -27,6 +27,8 @@ idf_build_set_property(COMPILE_OPTIONS "-Wno-unused-function" APPEND)
 idf_build_set_property(COMPILE_OPTIONS "-Wno-pointer-arith" APPEND) 
 
 project(WT32-SqLn)
+set(LV_CONF_PATH "${PROJECT_DIR}/main/lv_conf.h")
+idf_build_set_property(COMPILE_OPTIONS "-DLV_CONF_PATH=${LV_CONF_PATH}" APPEND)
 
 # Enable colors for compile output
 idf_build_set_property(COMPILE_OPTIONS "-fdiagnostics-color=always" APPEND)
@@ -40,7 +42,7 @@ message(STATUS "PROJECT_DIR = ${PROJECT_DIR}")
 message(STATUS "BUILD_DIR = ${BUILD_DIR}")
 message(STATUS "SDKCONFIG = ${SDKCONFIG}")
 message(STATUS "SDKCONFIG_DEFAULTS = ${SDKCONFIG_DEFAULTS}")
-message(STATUS "CONFIG_LV_CONF_SKIP = ${CONFIG_LV_CONF_SKIP}")
+message(STATUS "CONFIG_LV_CONF_SKIP = ${CONFIG_LV_CONF_SKIP}  LV_CONF_PATH=${LV_CONF_PATH}")
 #message(STATUS "COMPILE_OPTIONS = ${COMPILE_OPTIONS}")
 message(STATUS "---------------------------------------")
 message(STATUS "CMAKE_SOURCE_DIR = ${CMAKE_SOURCE_DIR}")

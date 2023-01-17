@@ -65,7 +65,7 @@ without disconnecting the other wires.
 ##### Debug Interface on WT32-SC01 Plus
 | Pin | Description | ESP32 Pin | Voltage Range | Remark | Connect to |
 | --- | ----------- | --------- | ------------- | ------ | ---------- |
-| 1 | +5V | | 5V | USB-to-serial not sufficient as power source | open |
+| 1 | +5V | | 5V | USB-to-serial not sufficient as power source | open/VCC |
 | 2 | +3.3V | | 3.3V | For reference, not for power input | open |
 | 3 | ESP_TXD | TXD0 | 3.3V TTL | | Rx |
 | 4 | ESP_RXD | RXD0 | 3.3V TTL | | Tx |
@@ -85,15 +85,15 @@ The following steps assume you have an application succesfully compiled using `i
 To program, then run your application optionally with the serial monitor, power the WT32-SC01 Plus via its own
 USB-C port as well as connecting your serial board to a USB port on your computer.
 
-1. If you are using a Windows or MacOS machine, make sure you have the necessary driver installed for your USN-to-serial board.
-   Refer to the documentation provided by the vendor for details.
-   It is probably going to be a [CP210x][https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers] or [CH34X][https://www.wemos.cc/en/latest/ch340_driver.html] drivers.
+1. If you are using a Windows or MacOS machine, make sure you have the necessary driver installed for your USB-to-serial board.
+   Refer to the documentation provided by your board vendor for details.
+   It is probably going to be a [CP210x](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers) or [CH34X](https://www.wemos.cc/en/latest/ch340_driver.html) driver.
 
-1. To enter programming mode, connect the GPIO0 wire to the GND pin, then press the `RST` button on the back
-of the WT32-SC01 Plus.
+1. To enter flashing mode, connect the GPIO0 wire to the GND pin, then press the `RST` button on the back
+   of the WT32-SC01 Plus.
 
 1. Flash your application using the command `idf.py flash`. Wait until the flashing process completes with a `Hard resetting via RTS pin...` message.
-   Skip to step 5 if you are not using the serial monitor to debug your application.
+   Skip to step 6 if you are not using the serial monitor to debug your application.
 
 1. Leave the GPIO0 wire connected to the GND pin and reset the WT32-SC01 Plus again.
 
@@ -104,7 +104,7 @@ of the WT32-SC01 Plus.
 --- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
 ```
 
-5. To run your application, disconnect the GPIO0 wire, then reset the WT32-SC01 Plus again.
+6. To run your application, disconnect the GPIO0 wire, then reset the WT32-SC01 Plus again.
 
 
 ### Using the WT programmer
@@ -145,6 +145,7 @@ $ cp -r SquareLine/boards/* /Applications/Squareline_Studio.app/Contents/boards
 
 Restart Squareline Studio if it is was already running.
 
+You'll find the Squareline Studio project for this example in `SquareLine/SquareLine_Project.spj`.
 When exporting your UI files, export them in the main/ui directory
 
 
