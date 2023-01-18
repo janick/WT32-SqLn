@@ -27,7 +27,9 @@ here's a detailed description of what I learned. Further contributions welcomed.
 ## What you need to know right now
 
 1. It uses a ESP32-S3 WROVER, not a ESP32 VROOM.
-1. It is not supported by the latest Arduino IDE
+1. It is not supported by the latest Arduino IDE.
+   If you have some experience with git, cmake, and the command-line, you'll find using `esp-idf` very easy and much more powerful.
+   Personally, I'm never going back to the Arduino IDE.
 1. You can't program it using the USB-C port
 1. You can't power it using the USB-to-serial board only
 1. You cannot have WiFi and BLE actively on at the same time. You must put one to sleep before enabling the other.
