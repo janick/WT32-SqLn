@@ -1,3 +1,7 @@
+![License: MIT](https://img.shields.io/github/license/janick/WT32-SqLn)
+![ESPIDF](https://img.shields.io/badge/espidf-v5.0-red)
+![lgvl](https://img.shields.io/badge/lvgl-v8.3.3-orange)
+
 # WT32-SqLn
 Getting started with Wireless Tag's WT32-SC01 Plus using SquareLine Studio, LVGL, and OTA updates.
 
@@ -26,6 +30,8 @@ here's a detailed description of what I learned. Further contributions welcomed.
 1. It is not supported by the latest Arduino IDE
 1. You can't program it using the USB-C port
 1. You can't power it using the USB-to-serial board only
+1. You cannot have WiFi and BLE actively on at the same time. You must put one to sleep before enabling the other.
+
 
 ## What you'll need
 
@@ -119,6 +125,8 @@ If you were fortunate enough to order a WT32-SC01 Plus that came with its own cu
 This trivial example application includes over-the-air (OTA) update cability.
 Once the example application is flashed using the serial communication board,
 you can use OTA updates instead for subsequent updates but takes longer to flash (approx 2mins).
+As long as you do not modify the code up to the point where the spash screen is replaced
+with the main screen, OTA should remain functional.
 
 1. Build the latest version of the application using the command `idf.py build`
 
@@ -191,7 +199,7 @@ ota_1,app,ota_1,0x400000,4032K,
 ```
 
 Refer to [Partition Tables](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/partition-tables.html) for more details about trade-offs.
-
+Note that you cannot modify partitions via OTA. A change in partitions requires serial flashing.
 
 ## ToDo
 
