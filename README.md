@@ -4,7 +4,9 @@ Getting started with Wireless Tag's WT32-SC01 Plus using SquareLine Studio, LVGL
 ## Overview
 I recently bought a WT32-SC01 Plus but quickly grew frustrated when it came time to use it.
 I found plenty of YouTube videos demonstrating it's amazing screen and performance,
-all in an under-$30 device. After plenty of digging and experiments and frustrating hours,
+all in an under-$30 device,
+but somehow the "how did you compile then upload that application to the board?" question was never answered.
+After plenty of digging and experiments and frustrating hours,
 here's a detailed description of what I learned. Further contributions welcomed.
 
 * [What you need to know right now](#what-you-need-to-know-right-now)
