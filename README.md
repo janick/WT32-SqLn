@@ -22,13 +22,15 @@ here's a detailed description of what I learned. Further contributions welcomed.
 * [Squareline Studio](#squareline-studio)
 * [Building This Example](#building-this-example)
 * [Screenshots](#screenshots)
+* [GPIOs](#gpios)
+* [Partitions](#partitions)
 * [3D-printed cases](#3d-printed-cases)
 
 ## What you need to know right now
 
 1. It uses a ESP32-S3 WROVER, not a ESP32 VROOM.
 1. It is not supported by the latest Arduino IDE.
-   If you have some experience with git, cmake, and the command-line, you'll find using `esp-idf` very easy and much more powerful.
+   If you have some experience with `git`, `cmake`, and the command-line, you'll find using `esp-idf` very easy and much more powerful.
    Personally, I'm never going back to the Arduino IDE.
 1. You can't program it using the USB-C port
 1. You can't power it using the USB-to-serial board only
@@ -184,6 +186,24 @@ After cloning this respository:
 
 <img src="assets/splashScreen.jpg" height=300> <img src="assets/OTAScreen.jpg" height=300> <img src="assets/mainAppScreen.jpg" height=300>
 
+
+## GPIOs
+
+Only 6 GPIOs are exposed via the [8-pin MX1.25 PicoBlade](https://www.aliexpress.us/item/3256804401152079.html) Extended I/O interface.
+
+##### I/O Interface on WT32-SC01 Plus
+| Pin | ESP32 Pin | Voltage Range | Remark |
+| --- | --------- | ------------- | ------ |
+| 1 | +5V | 5V+/-5% | Input or output |
+| 2 | GND | 0V | Ground |
+| 3 | GPIO 10 | 0-3.3V | |
+| 4 | GPIO 11 | 0-3.3V | |
+| 5 | GPIO 12 | 0-3.3V | |
+| 6 | GPIO 13 | 0-3.3V | |
+| 7 | GPIO 14 | 0-3.3V | |
+| 8 | GPIO 21 | 0-3.3V | |
+
+
 ## Partitions
 
 This example uses a custom partition for maximum application size.
@@ -202,6 +222,7 @@ ota_1,app,ota_1,0x400000,4032K,
 
 Refer to [Partition Tables](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/partition-tables.html) for more details about trade-offs.
 Note that you cannot modify partitions via OTA. A change in partitions requires serial flashing.
+
 
 ## ToDo
 
