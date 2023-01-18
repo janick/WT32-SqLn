@@ -75,15 +75,14 @@ It is important that it be possible to disconnect the GPIO0 wire from the USB-to
 without disconnecting the other wires.
 
 ##### Debug Interface on WT32-SC01 Plus
-| Pin | Description | ESP32 Pin | Voltage Range | Remark | Connect to |
-| --- | ----------- | --------- | ------------- | ------ | ---------- |
-| 1 | +5V | | 5V | USB-to-serial not sufficient as power source | open/VCC |
-| 2 | +3.3V | | 3.3V | For reference, not for power input | open |
-| 3 | ESP_TXD | TXD0 | 3.3V TTL | | Rx |
-| 4 | ESP_RXD | RXD0 | 3.3V TTL | | Tx |
-| 5 | EN | EN | 0-3.3V | | open |
-| 6 | BOOT | GPIO 0 | 0-3.3V | | GND/open |
-| 7 | GND | | 0V | | GND |
+| Pin | ESP32 Pin | Voltage Range | Remark | Connect to |
+| --- | +5V | 5V | USB-to-serial not sufficient as power source | open/VCC |
+| 2 | +3.3V | 3.3V | For reference, not for power input | open |
+| 3 | TXD0 | 3.3V TTL | | Rx |
+| 4 | RXD0 | 3.3V TTL | | Tx |
+| 5 | EN | 0-3.3V | Resets the ESP32 when pulled to GND | open |
+| 6 | GPIO 0 | 0-3.3V | Enters flashing mode when pulled to GND during reset | GND/open |
+| 7 | GND | 0V | | GND |
 
 ![WT32-SC01 Plus Back](assets/wt32_sc01_plus.png)
 
@@ -191,7 +190,7 @@ After cloning this respository:
 
 Only 6 GPIOs are exposed via the [8-pin MX1.25 PicoBlade](https://www.aliexpress.us/item/3256804401152079.html) Extended I/O interface.
 
-##### I/O Interface on WT32-SC01 Plus
+##### Extended I/O Interface on WT32-SC01 Plus
 | Pin | ESP32 Pin | Voltage Range | Remark |
 | --- | --------- | ------------- | ------ |
 | 1 | +5V | 5V+/-5% | Input or output |
