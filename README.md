@@ -42,8 +42,14 @@ here's a detailed description of what I learned. Factual corrections and further
 or
 
 1. A [WT32-SC01 Plus board](https://www.aliexpress.us/item/3256803559528956.html) without programmer
-1. A [3.3V USB-to-Serial communication board](https://www.aliexpress.us/item/3256803764808791.html)
 1. [7-pin MX1.25 PicoBlade dongles](https://www.aliexpress.us/item/3256804401152079.html) (get some 8-pin ones too if you plan on using GPIOs)
+1. A normally-open momentary push button
+
+or
+
+1. A [WT32-SC01 Plus board](https://www.aliexpress.us/item/3256803559528956.html) without programmer
+1. [7-pin MX1.25 PicoBlade dongles](https://www.aliexpress.us/item/3256804401152079.html) (get some 8-pin ones too if you plan on using GPIOs)
+1. A [3.3V USB-to-Serial communication board](https://www.aliexpress.us/item/3256803764808791.html)
 1. [2.54mm/0.1" pin header with suitable female connector housings](https://www.amazon.com/gp/product/B077X8XV2J)
 
 and:
