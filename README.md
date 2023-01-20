@@ -105,7 +105,7 @@ Here's my DIY programming cable Boot Button.
 I was told of this option after hours of scouring the web
 and finally [using a USB-to-serial programmer](#using-your-own-usb-to-serial-board) using the same approach as all other ESP32 MCUs.
 That this Boot Button doubles as a release for all my pent-up frustration is no accident.
-![WT32-SC01 Plus DIY Boot Button Cable](assets/BootButton.jpg "DIY Boot Button")
+![WT32-SC01 Plus DIY Boot Button Cable](assets/bootButton.jpg "DIY Boot Button")
 
 The following steps assume you have an application succesfully compiled using `idf.py build` (see [Build This Example](#build-this-example) section).
 To program, then run your application with the serial monitor, connect the WT32-SC01 Plus via its own
