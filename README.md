@@ -78,7 +78,7 @@ see the "[Using your own USB-to-serial board](#using-your-own-usb-to-serial-boar
 ##### Debug Interface on WT32-SC01 Plus
 | Pin | ESP32 Pin | Voltage Range | Remark | Boot Button | Serial |
 | --- | --------- | ------------- | ------ | ----------- | ------ |
-| 1 | +5V | 5V | USB-to-serial not sufficient as power source | open/5V |
+| 1 | +5V | 5V | USB-to-serial not sufficient as power source | open | open/5V |
 | 2 | +3.3V | 3.3V | For reference, not for power input | open | open |
 | 3 | TXD0 | 3.3V TTL | | open | Rx |
 | 4 | RXD0 | 3.3V TTL | | open | Tx |
