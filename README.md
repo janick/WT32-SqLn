@@ -16,8 +16,8 @@ here's a detailed description of what I learned. Factual corrections and further
 * [What you need to know right now](#what-you-need-to-know-right-now)
 * [What you'll need](#what-youll-need)
 * [Programming](#programming)
-  * [Using the USB-C port](#using-the-usb-c-port)
   * [Using the WT programmer](#using-the-wt-programmer)
+  * [Using the USB-C port](#using-the-usb-c-port)
   * [Using your own USB-to-serial board](#using-your-own-usb-to-serial-board)
 * [OTA updates](#ota-updates)
 * [Squareline Studio](#squareline-studio)
@@ -75,6 +75,20 @@ If you are particular masochistic (or ignorant of the above-two options like I w
 see the "[Using your own USB-to-serial board](#using-your-own-usb-to-serial-board) section
 
 
+##### Debug Interface on WT32-SC01 Plus
+| Pin | ESP32 Pin | Voltage Range | Remark | Boot Button | Serial |
+| --- | --------- | ------------- | ------ | ----------- | ------ |
+| 1 | +5V | 5V | USB-to-serial not sufficient as power source | open/5V |
+| 2 | +3.3V | 3.3V | For reference, not for power input | open | open |
+| 3 | TXD0 | 3.3V TTL | | open | Rx |
+| 4 | RXD0 | 3.3V TTL | | open | Tx |
+| 5 | EN | 0-3.3V | Resets the ESP32 when pulled to GND | open | open |
+| 6 | GPIO 0 | 0-3.3V | Enters flashing mode when pulled to GND during reset | button | GND/open |
+| 7 | GND | 0V | | button | GND |
+
+![WT32-SC01 Plus Back](assets/wt32_sc01_plus.png)
+
+
 ### Using the WT programmer
 
 If you were fortunate enough to order a WT32-SC01 Plus that came with its own custom programmer, TBD
@@ -87,19 +101,6 @@ However, since there is no BOOT button, you have to manually short the GPIO0 and
 
 Using a 7-pin MX1.25 PicoBlade dongle and a momentary-closed push-button,
 create a cable to connect the GPIO0 and GND pins to the normally-open terminals of the button.
-
-##### Debug Interface on WT32-SC01 Plus
-| Pin | ESP32 Pin | Voltage Range | Remark | Connect to |
-| --- | --------- | ------------- | ------ | ---------- |
-| 1 | +5V | 5V | USB-to-serial not sufficient as power source | open |
-| 2 | +3.3V | 3.3V | For reference, not for power input | open |
-| 3 | TXD0 | 3.3V TTL | | open |
-| 4 | RXD0 | 3.3V TTL | | open |
-| 5 | EN | 0-3.3V | Resets the ESP32 when pulled to GND | open |
-| 6 | GPIO 0 | 0-3.3V | Enters flashing mode when pulled to GND during reset | button |
-| 7 | GND | 0V | | button |
-
-![WT32-SC01 Plus Back](assets/wt32_sc01_plus.png)
 
 Here's my DIY programming cable Boot Button.
 I was told of this option after hours of scouring the web
@@ -131,19 +132,6 @@ and using a *separate* 1-pin connector housing, connect the GPIO0 pin on the Deb
 to a *second* exposed GND pin on your USB-to-serial communication board.
 It is important that it be possible to disconnect the GPIO0 wire from the USB-to-serial board
 without disconnecting the other wires.
-
-##### Debug Interface on WT32-SC01 Plus
-| Pin | ESP32 Pin | Voltage Range | Remark | Connect to |
-| --- | --------- | ------------- | ------ | ---------- |
-| 1 | +5V | 5V | USB-to-serial not sufficient as power source | open/VCC |
-| 2 | +3.3V | 3.3V | For reference, not for power input | open |
-| 3 | TXD0 | 3.3V TTL | | Rx |
-| 4 | RXD0 | 3.3V TTL | | Tx |
-| 5 | EN | 0-3.3V | Resets the ESP32 when pulled to GND | open |
-| 6 | GPIO 0 | 0-3.3V | Enters flashing mode when pulled to GND during reset | GND/open |
-| 7 | GND | 0V | | GND |
-
-![WT32-SC01 Plus Back](assets/wt32_sc01_plus.png)
 
 Here's my DIY programming cable.
 I did connect the 5V line so I could easily identify which side of the connector was "up": the red wire goes with the VCC pin.
