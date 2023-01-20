@@ -29,10 +29,6 @@ here's a detailed description of what I learned. Further contributions welcomed.
 ## What you need to know right now
 
 1. It uses a ESP32-S3 WROVER, not a ESP32 VROOM.
-1. It is not supported by the latest Arduino IDE.
-   If you have some experience with `git`, `cmake`, and the command-line, you'll find using `esp-idf` very easy and much more powerful.
-   Personally, I'm never going back to the Arduino IDE.
-1. You can't program it using the USB-C port
 1. You can't power it using the USB-to-serial board only
 1. You cannot have WiFi and BLE actively on at the same time. You must put one to sleep before enabling the other.
 
@@ -57,10 +53,13 @@ and:
 
 ## Programming
 
-Unlike other ESP32 development boards, you can't program the WT32-SC01 Plus using the USB-C port.
-That port is only for supplying power.
+Unlike other ESP32 development boards, you can't simply connect the WT32-SC01 Plus via its USB-C port
+and let the Arduino IDE do its magic.
 You *HAVE TO* use the serial port and trigger the programming mode using EN and GPIO0.
 As the programmer wasn't included with the board I purchased, it was a particularly frustrating step.
+
+**Note:** Apparently, you can program via the USB-C port but since there is no BOOT button, you have to manually short
+the GPIO0 and GND pins on the Debug Interface. To be verified.
 
 If you bought the version that includes the programmer, you can skip to the "[Using the WT programmer](#using-the-wt-programmer)" section.
 
