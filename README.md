@@ -16,9 +16,9 @@ here's a detailed description of what I learned. Factual corrections and further
 * [What you need to know right now](#what-you-need-to-know-right-now)
 * [What you'll need](#what-youll-need)
 * [Programming](#programming)
-  * [Using your own USB-to-serial board](#using-your-own-usb-to-serial-board)
   * [Using the USB-C port](#using-the-usb-c-port)
   * [Using the WT programmer](#using-the-wt-programmer)
+  * [Using your own USB-to-serial board](#using-your-own-usb-to-serial-board)
 * [OTA updates](#ota-updates)
 * [Squareline Studio](#squareline-studio)
 * [Building This Example](#building-this-example)
@@ -56,12 +56,65 @@ and:
 
 Unlike other ESP32 development boards, you can't simply connect the WT32-SC01 Plus via its USB-C port
 and let the Arduino IDE do its magic.
-You *HAVE TO* use the serial port and trigger the programming mode using EN and GPIO0.
-As the programmer wasn't included with the board I purchased, it was a particularly frustrating step.
+You have to either use the custom programmer provided by WirelessTag,
+or use the USB-C port and explicitly put it in flashing mode.
+As the programmer wasn't included with the board I purchased and the explicitly-put-the-board-in-flashing-mode wasn't documented anywhere,
+it was a particularly frustrating step to figure out.
 
-**Note:** Apparently, you can [program via the USB-C port](#using-the-usb-c-port)
+If you bought the version that includes the programmer, see the "[Using the WT programmer](#using-the-wt-programmer)" section.
 
-If you bought the version that includes the programmer, you can skip to the "[Using the WT programmer](#using-the-wt-programmer)" section.
+If you have a momentary-closed button, see the "[Using the USB-C port](#using-the-usb-c-port)" section.
+
+If you are particular masochistic (or ignorant of the above-two options like I was),
+see the "[Using your own USB-to-serial board](#using-your-own-usb-to-serial-board) section
+
+
+### Using the WT programmer
+
+If you were fortunate enough to order a WT32-SC01 Plus that came with its own custom programmer, TBD
+
+
+### Using the USB-C port
+
+You can program via the USB-C port if your force the device into flashing mode.
+However, since there is no BOOT button, you have to manually short the GPIO0 and GND pins on the Debug Interface.
+
+Using a 7-pin MX1.25 PicoBlade dongle and a momentary-closed push-button,
+create a cable to connect the GPIO0 and GND pins to the normally-open terminals of the button.
+
+##### Debug Interface on WT32-SC01 Plus
+| Pin | ESP32 Pin | Voltage Range | Remark | Connect to |
+| --- | --------- | ------------- | ------ | ---------- |
+| 1 | +5V | 5V | USB-to-serial not sufficient as power source | open |
+| 2 | +3.3V | 3.3V | For reference, not for power input | open |
+| 3 | TXD0 | 3.3V TTL | | open |
+| 4 | RXD0 | 3.3V TTL | | open |
+| 5 | EN | 0-3.3V | Resets the ESP32 when pulled to GND | open |
+| 6 | GPIO 0 | 0-3.3V | Enters flashing mode when pulled to GND during reset | button |
+| 7 | GND | 0V | | button |
+
+![WT32-SC01 Plus Back](assets/wt32_sc01_plus.png)
+
+Here's my DIY programming cable Boot Button.
+I was told of this option after hours of scouring the web
+and finally [using a USB-to-serial programmer](#using-your-own-usb-to-serial-board) using the same approach as all other ESP32 MCUs.
+That this Boot Button doubles as a release for all my pent-up frustration is no accident.
+![WT32-SC01 Plus DIY Boot Button Cable](assets/BootButton.jpg "DIY Boot Button")
+
+The following steps assume you have an application succesfully compiled using `idf.py build` (see [Build This Example](#build-this-example) section).
+To program, then run your application with the serial monitor, connect the WT32-SC01 Plus via its own
+USB-C port directly to your computer.
+
+1. If you are using a Windows or MacOS machine, make sure you have the necessary driver installed for your USB-to-serial board.
+   It is probably going to be a [CP210x](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers) or [CH34X](https://www.wemos.cc/en/latest/ch340_driver.html) driver.
+
+1. To enter flashing mode, press your Boot Button, then press the `RST` button on the back of the WT32-SC01 Plus.
+   Release the RST button first, then the Boot Button.
+
+1. Flash your application using the command `idf.py flash`. Wait until the flashing process completes with a `Hard resetting via RTS pin...` message.
+
+1. To run your application, reset the WT32-SC01 Plus again. The serial monitor will be automatically connected.
+
 
 ### Using your own USB-to-serial board
 
@@ -116,16 +169,6 @@ USB-C port as well as connecting your serial board to a USB port on your compute
 ```
 
 6. To run your application, disconnect the GPIO0 wire, then reset the WT32-SC01 Plus again.
-
-### Using the USB-C port
-
-Apparently, you can program via the USB-C port if your force the device into flashing mode.
-However, since there is no BOOT button, you have to manually short the GPIO0 and GND pins on the Debug Interface.
-To be verified.
-
-### Using the WT programmer
-
-If you were fortunate enough to order a WT32-SC01 Plus that came with its own custom programmer, TBD
 
 
 ## OTA Updates
