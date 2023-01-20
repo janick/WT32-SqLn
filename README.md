@@ -11,7 +11,7 @@ I found plenty of YouTube videos demonstrating it's amazing screen and performan
 all in an under-$30 device,
 but somehow the "how did you compile then upload that application to the board?" question was never answered.
 After plenty of digging and experiments and frustrating hours,
-here's a detailed description of what I learned. Further contributions welcomed.
+here's a detailed description of what I learned. Factual corrections and further contributions welcomed.
 
 * [What you need to know right now](#what-you-need-to-know-right-now)
 * [What you'll need](#what-youll-need)
@@ -59,8 +59,7 @@ and let the Arduino IDE do its magic.
 You *HAVE TO* use the serial port and trigger the programming mode using EN and GPIO0.
 As the programmer wasn't included with the board I purchased, it was a particularly frustrating step.
 
-**Note:** Apparently, you can program via the USB-C port but since there is no BOOT button, you have to manually short
-the GPIO0 and GND pins on the Debug Interface. To be verified.
+**Note:** Apparently, you can [program via the USB-C port](#using-the-usb-c-port)
 
 If you bought the version that includes the programmer, you can skip to the "[Using the WT programmer](#using-the-wt-programmer)" section.
 
@@ -120,7 +119,8 @@ USB-C port as well as connecting your serial board to a USB port on your compute
 
 ### Using the USB-C port
 
-Apparently, you can program via the USB-C port, if you manually short the GPIO0 and GND pins on the Debug Interface.
+Apparently, you can program via the USB-C port if your force the device into flashing mode.
+However, since there is no BOOT button, you have to manually short the GPIO0 and GND pins on the Debug Interface.
 To be verified.
 
 ### Using the WT programmer
