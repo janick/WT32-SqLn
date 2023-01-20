@@ -17,6 +17,7 @@ here's a detailed description of what I learned. Further contributions welcomed.
 * [What you'll need](#what-youll-need)
 * [Programming](#programming)
   * [Using your own USB-to-serial board](#using-your-own-usb-to-serial-board)
+  * [Using the USB-C port](#using-the-usb-c-port)
   * [Using the WT programmer](#using-the-wt-programmer)
 * [OTA updates](#ota-updates)
 * [Squareline Studio](#squareline-studio)
@@ -117,6 +118,10 @@ USB-C port as well as connecting your serial board to a USB port on your compute
 
 6. To run your application, disconnect the GPIO0 wire, then reset the WT32-SC01 Plus again.
 
+### Using the USB-C port
+
+Apparently, you can program via the USB-C port, if you manually short the GPIO0 and GND pins on the Debug Interface.
+To be verified.
 
 ### Using the WT programmer
 
