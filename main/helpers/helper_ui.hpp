@@ -27,11 +27,19 @@ SOFTWARE.
 #include "ui.h"
 
 
+namespace HELPER {
+
+namespace OTA {
+    void task(void*);
+    extern TaskHandle_t taskHandle;
+};
+
+
+namespace UI {
+
 //
 // OTA Screen Helpers
 //
-void ota_task(void*);
-
 
 static char  textbuf[4096];
 static char* textAppend = textbuf;
@@ -67,13 +75,11 @@ void showOTASpinner(bool show)
 
 
 
-TaskHandle_t otaTaskHandle = NULL;
-
 void splashScreenTapped_cb(lv_event_t * e)
 {
     static int tapCount = 0;
     
-    if (otaTaskHandle != NULL) return;
+    if (OTA::taskHandle != NULL) return;
 
     if (++tapCount < 5) return;
 
@@ -93,7 +99,7 @@ void splashScreenTapped_cb(lv_event_t * e)
         appendOTAstatus("Starting OTA...\n");
     }
     
-    xTaskCreate(&ota_task, "ota_task", 8192, NULL, 5, &otaTaskHandle);
+    xTaskCreate(&OTA::task, "OTA::task", 8192, NULL, 5, &OTA::taskHandle);
 }
 
 
@@ -110,3 +116,5 @@ void counterButtonClicked_cb(lv_event_t * e)
     lv_label_set_text(ui_Counter_Display, itoa(++clickCount, image, 10));
 }
 
+};
+};

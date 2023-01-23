@@ -55,6 +55,9 @@ SOFTWARE.
 #define PAD_TINY   (disp_size == DISP_LARGE ? lv_disp_dpx(theme.disp, 8) : disp_size == DISP_MEDIUM ? lv_disp_dpx(theme.disp, 6) : lv_disp_dpx(theme.disp, 2))
 
 
+namespace HELPER {
+namespace DISPLAY {
+
 /*** Setup screen resolution for LVGL ***/
 static const uint16_t screenWidth = TFT_WIDTH;
 static const uint16_t screenHeight = TFT_HEIGHT;
@@ -217,3 +220,7 @@ void touchpad_read(lv_indev_drv_t *indev_driver, lv_indev_data_t *data)
         data->point.y = touchY;
     }
 }
+
+
+};
+};

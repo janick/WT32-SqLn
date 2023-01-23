@@ -57,11 +57,11 @@ extern "C" void app_main(void)
     }
 #endif
 
-    lcd.init();         // Initialize LovyanGFX
-    lcd.initDMA();      // Init DMA
+    HELPER::DISPLAY::lcd.init();         // Initialize LovyanGFX
+    HELPER::DISPLAY::lcd.initDMA();      // Init DMA
     lv_init();          // Initialize lvgl
 
-    if (lv_display_init() != ESP_OK) // Configure LVGL
+    if (HELPER::DISPLAY::lv_display_init() != ESP_OK) // Configure LVGL
     {
         ESP_LOGE(TAG, "LVGL setup failed!!!");
     }
@@ -78,7 +78,7 @@ extern "C" void app_main(void)
 
     // Switch to the main application if OTA has not been started
     vTaskDelay(pdMS_TO_TICKS(5000));
-    if (otaTaskHandle == NULL) {
+    if (HELPER::OTA::taskHandle == NULL) {
         lvglLock lock;
 
         lv_scr_load(ui_Main_Screen);

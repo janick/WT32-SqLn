@@ -45,6 +45,13 @@ extern const uint8_t* server_cert_pem_start asm("_binary_ca_cert_pem_start");
 extern const uint8_t* server_cert_pem_end   asm("_binary_ca_cert_pem_end");
 
 
+namespace HELPER {
+namespace OTA {
+
+
+TaskHandle_t taskHandle = NULL;
+
+
 esp_err_t _http_event_handler(esp_http_client_event_t *evt)
 {
     switch (evt->event_id) {
@@ -166,7 +173,7 @@ void wifi_shutdown(void)
 esp_err_t wifi_connect(void)
 {
     ESP_LOGI(TAG, "Start connect.");
-    appendOTAstatus("Enabling WiFi...\n");
+    UI::appendOTAstatus("Enabling WiFi...\n");
     wifi_start();
 
     wifi_config_t wifi_config;
@@ -175,9 +182,9 @@ esp_err_t wifi_connect(void)
     strncpy((char*) wifi_config.sta.password, wifiCredentials.passwd, sizeof(wifi_config.sta.password));
     wifi_config.sta.scan_method = WIFI_FAST_SCAN;
     
-    appendOTAstatus("Connecting to '");
-    appendOTAstatus((char*) wifi_config.sta.ssid);
-    appendOTAstatus("'...\n");
+    UI::appendOTAstatus("Connecting to '");
+    UI::appendOTAstatus((char*) wifi_config.sta.ssid);
+    UI::appendOTAstatus("'...\n");
 
     s_retry_num = 0;
     ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, WIFI_EVENT_STA_DISCONNECTED, &handler_on_wifi_disconnect, NULL));
@@ -200,13 +207,13 @@ esp_err_t wifi_connect(void)
     esp_netif_ip_info_t info;
     ESP_ERROR_CHECK(esp_netif_get_ip_info(s_sta_netif, &info));
     ESP_LOGI(TAG, "Wifi connected: " IPSTR, IP2STR(&info.ip));
-    appendOTAstatus(fmt::format("Connected as {}.{}.{}.{}\n", IP2STR(&info.ip)).c_str());
+    UI::appendOTAstatus(fmt::format("Connected as {}.{}.{}.{}\n", IP2STR(&info.ip)).c_str());
     
     return ESP_OK;
 }
 
 
-void ota_task(void *pvParameter)
+void task(void *pvParameter)
 {
     esp_log_level_set("*", ESP_LOG_VERBOSE);
     
@@ -231,26 +238,30 @@ void ota_task(void *pvParameter)
 
     
     ESP_LOGI(TAG, "Fetching update from %s", config.url);
-    appendOTAstatus(fmt::format("Updating using '{}'...\n\nPlease wait ~2 mins.\n", config.url).c_str());
+    UI::appendOTAstatus(fmt::format("Updating using '{}'...\n\nPlease wait ~2 mins.\n", config.url).c_str());
 
-    showOTASpinner(true);
+    UI::showOTASpinner(true);
 
     esp_err_t ret = esp_https_ota(&ota_config);
 
-    showOTASpinner(false);
+    UI::showOTASpinner(false);
 
     if (ret == ESP_OK) {
         ESP_LOGI(TAG, "OTA Succeed, Rebooting...");
-        appendOTAstatus("\nOTA OK!\n");
+        UI::appendOTAstatus("\nOTA OK!\n");
         vTaskDelay(pdMS_TO_TICKS(500));
         esp_restart();
     } else {
-        appendOTAstatus("\n** OTA FAILED! **\n");
+        UI::appendOTAstatus("\n** OTA FAILED! **\n");
         ESP_LOGE(TAG, "Firmware upgrade failed");
         while (1) vTaskDelay(pdMS_TO_TICKS(1000));
     }
     
-    otaTaskHandle = NULL;
+    taskHandle = NULL;
     
     vTaskDelete(NULL);
 }
+
+
+};
+};
