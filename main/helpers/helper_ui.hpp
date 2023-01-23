@@ -45,24 +45,24 @@ void appendOTAstatus(const char* text)
     if (len > remaining) len = remaining;
     if (len <= 0) return;
 
-    lvgl_acquire();
+    lvglLock lock;
+    
     strncpy(textAppend, text, len+1);
     textAppend += len;
 
     lv_label_set_text_static(ui_OTA_Status, textbuf);
-    lvgl_release();
 }
 
 
 void showOTASpinner(bool show)
 {
-    lvgl_acquire();
+    lvglLock lock;
+
     if (show) {
         lv_obj_clear_flag(ui_OTA_Spinner, LV_OBJ_FLAG_HIDDEN);
     } else {
         lv_obj_add_flag(ui_OTA_Spinner, LV_OBJ_FLAG_HIDDEN);
     }
-    lvgl_release();
 }
 
 
@@ -81,15 +81,17 @@ void splashScreenTapped_cb(lv_event_t * e)
     // The OTA "screen" is a hidden panel over the splash screen
     // to minimize the number of screens used in Squareline Studio
     //
-    lvgl_acquire();
-    showOTASpinner(false);
-    lv_obj_clear_flag(ui_OTA_Panel, LV_OBJ_FLAG_HIDDEN);
-
-    textAppend = textbuf;
-    *textAppend = '\0';
-
-    appendOTAstatus("Starting OTA...\n");
-    lvgl_release();
+    {
+        lvglLock lock;
+        
+        showOTASpinner(false);
+        lv_obj_clear_flag(ui_OTA_Panel, LV_OBJ_FLAG_HIDDEN);
+        
+        textAppend = textbuf;
+        *textAppend = '\0';
+        
+        appendOTAstatus("Starting OTA...\n");
+    }
     
     xTaskCreate(&ota_task, "ota_task", 8192, NULL, 5, &otaTaskHandle);
 }
@@ -104,8 +106,7 @@ void counterButtonClicked_cb(lv_event_t * e)
     static int clickCount = 0;
     char image[16];
     
-    lvgl_acquire();
+    lvglLock lock;
     lv_label_set_text(ui_Counter_Display, itoa(++clickCount, image, 10));
-    lvgl_release();
 }
 

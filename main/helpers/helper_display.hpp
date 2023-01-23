@@ -27,7 +27,6 @@ SOFTWARE.
 #include "lv_conf.h"
 #include <lvgl.h>
 #include <freertos/FreeRTOS.h>
-#include <freertos/semphr.h>
 
 #define LV_TICK_PERIOD_MS 1
     
@@ -71,10 +70,6 @@ static lv_color_t bg_theme_color;
 
 static LGFX lcd; // declare display variable
 
-/* Creates a semaphore to handle concurrent call to lvgl stuff
- * If you wish to call *any* lvgl function from other threads/tasks
- * you should lock on the very same semaphore! */
-static SemaphoreHandle_t xGuiSemaphore = NULL;
 static TaskHandle_t g_lvgl_task_handle;
 
 static void gui_task(void *args);
@@ -149,14 +144,6 @@ esp_err_t lv_display_init()
     //bg_theme_color = theme_current->flags & LV_USE_THEME_DEFAULT ? DARK_COLOR_CARD : LIGHT_COLOR_CARD;
     bg_theme_color = theme_current->flags & LV_USE_THEME_DEFAULT ? lv_palette_darken(LV_PALETTE_GREY, 5) : lv_color_hex(0xBFBFBD);
 
-    xGuiSemaphore = xSemaphoreCreateMutex();
-    if (!xGuiSemaphore)  
-    {
-        ESP_LOGE(TAG, "Create mutex for LVGL failed");
-        if (lv_periodic_timer) esp_timer_delete(lv_periodic_timer);
-        return ESP_FAIL;
-    }
-
     int err = xTaskCreatePinnedToCore(gui_task, "lv gui", 1024 * 8, NULL, 5, &g_lvgl_task_handle, 0);
     if (!err)
     {
@@ -204,27 +191,10 @@ static void gui_task(void *args)
         vTaskDelay(pdMS_TO_TICKS(10));
 
         /* Try to take the semaphore, call lvgl related function on success */
-        if (pdTRUE == xSemaphoreTake(xGuiSemaphore, portMAX_DELAY)) {
-            lv_task_handler();
-            //lv_timer_handler_run_in_period(5); /* run lv_timer_handler() every 5ms */
-            xSemaphoreGive(xGuiSemaphore);
-        }
-    }
-}
-
-void lvgl_acquire(void)
-{
-    TaskHandle_t task = xTaskGetCurrentTaskHandle();
-    if (g_lvgl_task_handle != task) {
-        xSemaphoreTake(xGuiSemaphore, portMAX_DELAY);
-    }
-}
-
-void lvgl_release(void)
-{
-    TaskHandle_t task = xTaskGetCurrentTaskHandle();
-    if (g_lvgl_task_handle != task) {
-        xSemaphoreGive(xGuiSemaphore);
+        lvglLock lock;
+        
+        lv_task_handler();
+        //lv_timer_handler_run_in_period(5); /* run lv_timer_handler() every 5ms */
     }
 }
 

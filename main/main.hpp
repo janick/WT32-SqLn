@@ -40,6 +40,8 @@ SOFTWARE.
 #include <fmt/core.h>
 #include <fmt/format.h>
 #include <freertos/FreeRTOS.h>
+#include <freertos/semphr.h>
+
 
 using namespace std ;
 
@@ -49,6 +51,43 @@ using namespace std ;
 //#include "conf_Makerfabs_S3_PTFT.h"    
 #undef SD_SUPPORTED
 /********************************************************/
+
+//
+// Semaphore to handle concurrent call to lvgl and other shared stuff
+//
+// If you wish to call *any* lvgl function from other threads/tasks
+// you should lock on the very same semaphore!
+//
+
+typedef enum {LVGL, BLE} SemaphoreInstance_t;
+
+template<SemaphoreInstance_t I>
+class lockGuard
+{
+    static SemaphoreHandle_t sSem;
+
+public:
+    static bool init()
+        {
+            sSem = xSemaphoreCreateRecursiveMutex();
+            return sSem;
+        }
+
+    lockGuard()
+        {
+            xSemaphoreTakeRecursive(sSem, portMAX_DELAY);
+        }
+
+    ~lockGuard()
+        {
+            xSemaphoreGiveRecursive(sSem);
+        }
+};
+template<SemaphoreInstance_t I> SemaphoreHandle_t lockGuard<I>::sSem;
+
+typedef lockGuard<LVGL>    lvglLock;
+typedef lockGuard<BLE>     bleLock;
+
 
 #include "helper_display.hpp"
 #include "helper_ui.hpp"

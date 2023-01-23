@@ -66,20 +66,22 @@ extern "C" void app_main(void)
         ESP_LOGE(TAG, "LVGL setup failed!!!");
     }
 
-    lvgl_acquire();
-    ui_init();
-    lv_label_set_text(ui_Splash_Screen_Title, TAG);
-    lv_label_set_text(ui_Splash_Screen_Text, device_info().c_str());
-    lv_obj_set_style_text_font(ui_Splash_Screen_Text, &lv_font_unscii_8, LV_PART_MAIN| LV_STATE_DEFAULT);
-    lv_scr_load(ui_Splash_Screen);
-    lvgl_release();
+    {
+        lvglLock lock;
+        
+        ui_init();
+        lv_label_set_text(ui_Splash_Screen_Title, TAG);
+        lv_label_set_text(ui_Splash_Screen_Text, device_info().c_str());
+        lv_obj_set_style_text_font(ui_Splash_Screen_Text, &lv_font_unscii_8, LV_PART_MAIN| LV_STATE_DEFAULT);
+        lv_scr_load(ui_Splash_Screen);
+    }
 
     // Switch to the main application if OTA has not been started
     vTaskDelay(pdMS_TO_TICKS(5000));
     if (otaTaskHandle == NULL) {
-        lvgl_acquire();
+        lvglLock lock;
+
         lv_scr_load(ui_Main_Screen);
-        lvgl_release();
     }
     
 #ifdef SD_SUPPORTED
