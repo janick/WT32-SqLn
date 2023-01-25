@@ -36,6 +36,14 @@ extern "C" void app_main(void)
     // Print device info
     ESP_LOGE(TAG,"\n%s",device_info().c_str());
 
+    if (!lvglLock::init()) {
+        ESP_LOGE(TAG, "Create mutex for LVGL failed");
+        return;
+    }
+    if (!bleLock::init()) {
+        ESP_LOGE(TAG, "Create mutex for BLE failed");
+        return;
+    }
     //Initialize NVS
     esp_err_t err = nvs_flash_init();
 
