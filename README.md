@@ -96,7 +96,9 @@ If you were fortunate enough to order a WT32-SC01 Plus that came with its own cu
 
 ### Using the USB-C port
 
-You can program via the USB-C port if your force the device into flashing mode.
+You can program via the USB-C port if the device is put into flashing mode.
+If the device is running normally, the `idf.py flash` command will automatically reset it and put it into flashing mode.
+But if it is hung or crashed, it will have to be put into flashing mode manually.
 However, since there is no BOOT button, you have to manually short the GPIO0 and GND pins on the Debug Interface.
 
 Using a 7-pin MX1.25 PicoBlade dongle and a momentary-closed push-button,
@@ -115,8 +117,11 @@ USB-C port directly to your computer.
 1. If you are using a Windows or MacOS machine, make sure you have the necessary driver installed for your USB-to-serial board.
    It is probably going to be a [CP210x](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers) or [CH34X](https://www.wemos.cc/en/latest/ch340_driver.html) driver.
 
-1. To enter flashing mode, press your Boot Button, then press the `RST` button on the back of the WT32-SC01 Plus.
-   Release the RST button first, then the Boot Button.
+1. Flash your application using the command `idf.py flash`. If the device gets put automatically into flashing mode,
+   it will automatically reset upon completion and start running your program.
+
+1. If the flashing application cannot find your device, force it into flashing mode by pressing your Boot Button,
+   then pressing the `RST` button on the back of the WT32-SC01 Plus. Release the RST button first, then the Boot Button.
 
 1. Flash your application using the command `idf.py flash`. Wait until the flashing process completes with a `Hard resetting via RTS pin...` message.
 
