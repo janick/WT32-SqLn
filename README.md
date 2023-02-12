@@ -91,8 +91,30 @@ see the "[Using your own USB-to-serial board](#using-your-own-usb-to-serial-boar
 
 ### Using the WT programmer
 
-If you were fortunate enough to order a WT32-SC01 Plus that came with its own custom programmer, TBD
+![WT32-SC01 Plus Programmer](assets/wtProgrammer.jpg)
 
+If you ordered a WT32-SC01 Plus that came with its own custom programmer,
+you can connect it directly to the DEBUG port on the back of the WT32-SC01 Plus.
+It exposes the familiar EN and BOOT buttons.
+
+Unfortunately, the 6" white USB-C cable that came with it was either bad or it is a power-only cable.
+When using it, the programmer and WT32-SC01 Plus powered up nicely, but my Mac never created the serial device
+and I was unable to program anything.
+Once I switched to a known-good data cable, everything worked smoothly.
+
+1. If you are using a Windows or MacOS machine, make sure you have the necessary driver installed for your USB-to-serial board.
+   It is probably going to be a [CP210x](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers) or [CH34X](https://www.wemos.cc/en/latest/ch340_driver.html) driver.
+
+1. Flash your application using the command `idf.py flash`. The device gets put automatically into flashing mode,
+   and it will automatically reset upon completion and start running your program.
+
+1. Should the flashing application cannot find your device,
+   force it into flashing mode by pressing your EN and BOOT buttons on the programmer,
+   Release the EN button first, then the BOOT Button.
+
+1. Flash your application using the command `idf.py flash`. Wait until the flashing process completes with a `Hard resetting via RTS pin...` message.
+
+1. To run your application, reset the WT32-SC01 Plus again by pressing on the EN button.
 
 ### Using the USB-C port
 
