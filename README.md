@@ -118,6 +118,9 @@ Once I switched to a known-good data cable, everything worked smoothly.
 
 ### Using the USB-C port
 
+**IMPORTANT** Make sure you are using a USB *data* cable, not a *power* cable. The latter will power the unit but will not be able to program it.
+I suspect the short white USB-C cables supplied with the units are power cable and why I originally assumed you could not program via the USB-C port.
+
 You can program via the USB-C port if the device is put into flashing mode.
 If the device is running normally, the `idf.py flash` command will automatically reset it and put it into flashing mode.
 But if it is hung or crashed, it will have to be put into flashing mode manually.
@@ -302,7 +305,7 @@ Note that you cannot modify partitions via OTA. A change in partitions requires 
 In the 3Dprint directory, you'll find STL files for 3D-printable cases
 
 * BatteryCase: Compact case that can fit the WT32-SC01 Plus, a [3.7V lithium-ion battery](https://www.aliexpress.us/item/3256803919111184.html), a [charger module](https://www.aliexpress.us/item/3256804193670438.html), and a [power switch](https://www.aliexpress.us/item/2251832642923360.html).
-  The USB-C opening and tabs to hold the charger module still need some tweaking.
+  The lid still needs some tweaking.
 
   <img src="assets/BatteryCase.jpg" height=300>
 
