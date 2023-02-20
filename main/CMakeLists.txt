@@ -1,6 +1,4 @@
-file(GLOB_RECURSE UI_FILES "ui/*.c")
-
-idf_component_register(SRCS "main.cpp" ${UI_FILES}
+idf_component_register(SRCS "main.cpp" "ui/ui.c" "ui/ui_helpers.c"
                 INCLUDE_DIRS "." "devices" "helpers" "ui"
 				REQUIRES LovyanGFX lvgl
 				app_update esp_https_ota esp_event esp_timer spi_flash esp_wifi esp_partition

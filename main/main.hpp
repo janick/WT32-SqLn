@@ -92,6 +92,7 @@ typedef lockGuard<BLE>     bleLock;
 #include "helper_display.hpp"
 #include "helper_ui.hpp"
 #include "helper_ota.hpp"
+#include "ui_callbacks.hpp"
 
 
 /* SD Card support */
