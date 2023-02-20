@@ -309,6 +309,7 @@ In the 3Dprint directory, you'll find STL files for 3D-printable cases
 
   <img src="assets/BatteryCase.jpg" height=300>
 
+* A [collection of 3D-printed cases by printminion](https://cults3d.com/en/design-collections/printminion/various-cases-for-wt32-sc01-plus-by-wireless-tag)
 
 ## References
 
