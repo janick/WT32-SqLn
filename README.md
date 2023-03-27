@@ -304,14 +304,9 @@ If you want to design a UI in landscape orientation, simply:
 
 ## 3D-Printed Cases
 
-In the 3Dprint directory, you'll find STL files for 3D-printable cases
+Here is a set of resources for 3D printed cases
 
-* BatteryCase: Compact case that can fit the WT32-SC01 Plus, a [3.7V lithium-ion battery](https://www.aliexpress.us/item/3256803919111184.html), a [charger module](https://www.aliexpress.us/item/3256804193670438.html), and a [power switch](https://www.aliexpress.us/item/2251832642923360.html).
-  The lid still needs some tweaking.
-
-  <img src="assets/BatteryCase.jpg" height=300>
-
-* A [collection of 3D-printed cases by printminion](https://cults3d.com/en/design-collections/printminion/various-cases-for-wt32-sc01-plus-by-wireless-tag)
+* [PrintMinion](https://cults3d.com/en/design-collections/printminion/various-cases-for-wt32-sc01-plus-by-wireless-tag)
 
 ## References
 
