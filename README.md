@@ -54,7 +54,7 @@ and:
 
 Unlike other ESP32 development boards, you can't simply connect the WT32-SC01 Plus via its USB-C port
 and let the Arduino IDE do its magic.
-You have to either use the [custom programmeri][https://www.aliexpress.us/item/3256804081022016.htmil] provided by WirelessTag,
+You have to either use the [custom programmer](https://www.aliexpress.us/item/3256804081022016.html) provided by WirelessTag,
 or use the USB-C port and (sometimes) explicitly put it in flashing mode.
 As the programmer wasn't included with the board I purchased and the explicitly-put-the-board-in-flashing-mode wasn't documented anywhere,
 it was a particularly frustrating step to figure out.
@@ -89,7 +89,7 @@ If you ordered a WT32-SC01 Plus that came with its own custom programmer,
 you can connect it directly to the DEBUG port on the back of the WT32-SC01 Plus.
 It exposes the familiar EN and BOOT buttons.
 
-If not, you can order a programmer [here][https://www.aliexpress.us/item/3256804081022016.html].
+If not, you can order a programmer [here](https://www.aliexpress.us/item/3256804081022016.html).
 
 Unfortunately, the 6" white USB-C cable that came with it was either bad or it is a power-only cable.
 When using it, the programmer and WT32-SC01 Plus powered up nicely, but my Mac never created the serial device
