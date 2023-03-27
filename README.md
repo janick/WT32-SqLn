@@ -14,7 +14,6 @@ After plenty of digging and experiments and frustrating hours,
 here's a detailed description of what I learned. Factual corrections and further contributions welcomed.
 
 * [What you need to know right now](#what-you-need-to-know-right-now)
-* [What you'll need](#what-youll-need)
 * [Programming](#programming)
   * [Using the WT programmer](#using-the-wt-programmer)
   * [Using the USB-C port](#using-the-usb-c-port)
@@ -26,13 +25,6 @@ here's a detailed description of what I learned. Factual corrections and further
 * [GPIOs](#gpios)
 * [Partitions](#partitions)
 * [3D-printed cases](#3d-printed-cases)
-
-## What you need to know right now
-
-1. It uses a ESP32-S3 WROVER, not a ESP32 VROOM.
-1. You can't power it using the USB-to-serial board only
-1. You cannot have WiFi and BLE actively on at the same time. You must put one to sleep before enabling the other.
-
 
 ## What you'll need
 
@@ -62,8 +54,8 @@ and:
 
 Unlike other ESP32 development boards, you can't simply connect the WT32-SC01 Plus via its USB-C port
 and let the Arduino IDE do its magic.
-You have to either use the custom programmer provided by WirelessTag,
-or use the USB-C port and explicitly put it in flashing mode.
+You have to either use the [custom programmeri][https://www.aliexpress.us/item/3256804081022016.htmil] provided by WirelessTag,
+or use the USB-C port and (sometimes) explicitly put it in flashing mode.
 As the programmer wasn't included with the board I purchased and the explicitly-put-the-board-in-flashing-mode wasn't documented anywhere,
 it was a particularly frustrating step to figure out.
 
@@ -96,6 +88,8 @@ see the "[Using your own USB-to-serial board](#using-your-own-usb-to-serial-boar
 If you ordered a WT32-SC01 Plus that came with its own custom programmer,
 you can connect it directly to the DEBUG port on the back of the WT32-SC01 Plus.
 It exposes the familiar EN and BOOT buttons.
+
+If not, you can order a programmer [here][https://www.aliexpress.us/item/3256804081022016.html].
 
 Unfortunately, the 6" white USB-C cable that came with it was either bad or it is a power-only cable.
 When using it, the programmer and WT32-SC01 Plus powered up nicely, but my Mac never created the serial device
