@@ -16,7 +16,7 @@ but somehow the "how did you compile then upload that application to the board?"
 
 After plenty of digging and experiments and frustrating hours,
 I'm convinced the 6" white USB-C cable that came with my unit was either bad or it is a power-only cable.
-Once I switched to a known-good cable, here's a detailed description of what I learned.
+Once I switched to a known-good cable, things got easier. Here's a detailed description of what I learned in the process.
 Factual corrections and further contributions welcomed.
 
 * [Programming](#programming)
@@ -224,6 +224,15 @@ When exporting your UI files, export them in the `main/ui` directory
 
 
 ## Building This Example
+
+Make sure you are using esp-idf version 5.0.2. It looks like the IDF installer installs the head of the main branch, not a stable release.
+
+```
+% cd <path/to/your/esp-idf>
+% git checkout v5.0.2
+% git submodule update
+% ./install.sh esp32,esp32s3
+```
 
 After cloning this respository:
 
