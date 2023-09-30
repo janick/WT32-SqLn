@@ -297,9 +297,10 @@ Note that you cannot modify partitions via OTA. A change in partitions requires 
 
 If you want to design a UI in landscape orientation, simply:
 
-1. In SquareLine Studio's Project Settings, set the orientation to 90 degrees
-2. In the file 'main/devices/conf_WT32SCO1-Plus.h', swap the values for TFT_WIDTH and TFT_HEIGHT then set the 'cfg.offset_rotation' in the panel instance configuration to '1'.
+1. In the file 'main/devices/conf_WT32SCO1-Plus.h', define the 'LANDSCAPE' symbol.
+2. In SquareLine Studio's Project Settings, set the width to 480, height to 320, and orientation to 90 degrees
 
+![Landscape Settings](assets/landscape.png)
 
 ## ToDo
 

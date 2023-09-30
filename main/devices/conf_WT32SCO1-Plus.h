@@ -36,9 +36,15 @@ SOFTWARE.
 #define SD_SCLK       GPIO_NUM_39
 #define SD_CS         GPIO_NUM_41
 
-// Portrait
+#undef LANDSCAPE  // Define for landscape orientation
+
+#ifdef LANDSCAPE
+#define TFT_WIDTH   480
+#define TFT_HEIGHT  320
+#else
 #define TFT_WIDTH   320
 #define TFT_HEIGHT  480
+#endif
 
 class LGFX : public lgfx::LGFX_Device
 {
@@ -78,11 +84,20 @@ public:
       cfg.pin_rst          =    4;  
       cfg.pin_busy         =    -1; 
 
+#ifdef LANDSCAPE
+      cfg.panel_width      =   TFT_HEIGHT;
+      cfg.panel_height     =   TFT_WIDTH;
+#else
       cfg.panel_width      =   TFT_WIDTH;
       cfg.panel_height     =   TFT_HEIGHT;
+#endif
       cfg.offset_x         =     0;
       cfg.offset_y         =     0;
+#ifdef LANDSCAPE
+      cfg.offset_rotation  =     1;
+#else
       cfg.offset_rotation  =     0;
+#endif
       cfg.dummy_read_pixel =     8;
       cfg.dummy_read_bits  =     1;
       cfg.readable         =  false;
